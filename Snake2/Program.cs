@@ -14,8 +14,10 @@ namespace Snake2
 
         static void Main(string[] args)
         {
-          
-            Console.SetBufferSize(max_x, max_y);
+
+            max_x = Console.BufferWidth;
+            max_y = 25; // Console.BufferHeight;
+            //Console.SetBufferSize(max_x, max_y);
             Walls walls = new Walls(max_x, max_y);
             walls.Draw();
            
@@ -24,7 +26,7 @@ namespace Snake2
             Snake snake = new Snake(p, 5, Direction.Right);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(77, 23, '$');
+            FoodCreator foodCreator = new FoodCreator(max_x - 3, max_y - 2, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
             while(true)
